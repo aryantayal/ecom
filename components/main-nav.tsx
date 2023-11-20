@@ -12,7 +12,6 @@ export function MainNav({
   const pathname = usePathname();
   const params = useParams();
 
-  console.log("params", params);
   const routes = [
     {
       href: `/${params.storeId}/settings`,
