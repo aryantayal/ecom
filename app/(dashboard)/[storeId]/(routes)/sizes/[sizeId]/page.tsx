@@ -1,5 +1,5 @@
 import prismadb from "@/lib/prisma.ds";
-import { BillboardForm } from "./components/billboard-form";
+import { BillboardForm } from "./components/size-form";
 
 const BillboardsPage = async ({
   params,
