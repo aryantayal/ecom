@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 datasource db {
   provider     = "mysql"
   url          = env("DATABASE_URL")
@@ -18,9 +15,9 @@ model Store {
   billboards Billboard[] @relation("StoreToBillboard")
   categories Category[]  @relation("StoreToCategory")
   sizes      Size[]      @relation("StoreToSize")
+  colors     Color[]     @relation("StoreToColor")
   createdAt  DateTime    @default(now())
   updatedAt  DateTime    @updatedAt
-  colors     Color[]     @relation("StoreToColor")
   products   Product[]   @relation("StoreToProduct")
 }
 
@@ -73,7 +70,7 @@ model Color {
   value     String
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
-  product   Product[]
+  products  Product[]
 
   @@index([storeId])
 }
