@@ -1,6 +1,16 @@
 "use client";
 
-import { AlertModal } from "@/components/modals/alerts-modal";
+import * as z from "zod";
+import axios from "axios";
+import { useState } from "react";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
+import { Trash } from "lucide-react";
+import { Billboard, Category } from "@prisma/client";
+import { useParams, useRouter } from "next/navigation";
+
+import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -10,26 +20,16 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Heading } from "@/components/ui/heading";
-import { Input } from "@/components/ui/input";
-import { Select } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Billboard, Category } from "@prisma/client";
+import { Heading } from "@/components/ui/heading";
+import { AlertModal } from "@/components/modals/alerts-modal";
 import {
+  Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@radix-ui/react-select";
-import axios from "axios";
-import { Trash } from "lucide-react";
-import { useParams, useRouter } from "next/navigation";
-
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import toast from "react-hot-toast";
-import { z } from "zod";
+} from "@/components/ui/select";
 
 const formSchema = z.object({
   name: z.string().min(2),
